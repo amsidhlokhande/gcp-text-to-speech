@@ -1,6 +1,6 @@
-##########################################
-# TextToSpeech Gateway
-##########################################
+#######################################################
+# Text to Speech Gateway
+#######################################################
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
@@ -16,9 +16,9 @@ spec:
       hosts:
         - "*"
 ---
-############################################################
-# TextToSpeech Virtual Service Account
-############################################################
+#######################################################
+# Text to Speech Virtual Service Account
+#######################################################
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
@@ -31,12 +31,13 @@ spec:
   http:
     - match:
         - uri:
-            exact: /textToSpeechFile
+            exact: /healthCheck
         - uri:
             exact: /textToSpeechFile
       route:
         - destination:
             host: texttospeech
             port:
-              number: 8181
----
+              number: 8080
+
+#---
