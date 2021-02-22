@@ -17,7 +17,7 @@ public class TextToSpeechControllerAdvice extends ResponseEntityExceptionHandler
 
     @ExceptionHandler(value = {Exception.class})
     public ResponseEntity<Object> handleCustomException(Exception exception, WebRequest request) {
-        MyCustomException myCustomException = new MyCustomException(new ExceptionModel(exception.getLocalizedMessage(), new Date()));
+        MyCustomException myCustomException = new MyCustomException(new ExceptionModel(exception.getLocalizedMessage(), new Date(), exception));
         return handleExceptionInternal(myCustomException, myCustomException.getExceptionModel(),
                 new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
@@ -38,4 +38,5 @@ class MyCustomException extends Exception {
 class ExceptionModel implements Serializable {
     private String errorMessage;
     private Date timestamp;
+    private Exception exception;
 }

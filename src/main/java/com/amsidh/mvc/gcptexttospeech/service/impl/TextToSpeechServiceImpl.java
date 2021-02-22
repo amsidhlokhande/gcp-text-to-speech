@@ -19,9 +19,12 @@ public class TextToSpeechServiceImpl implements TextToSpeechService {
 
     @Override
     public byte[] convertTextToSpeech(String message) {
+        log.info("Inside convertTextToSpeech method of TextToSpeechServiceImpl class");
         SynthesisInput synthesisText = getSynthesisText(message);
+        log.info("input value got Synthesised");
         // Perform the text-to-speech request
         SynthesizeSpeechResponse response = textToSpeechClient.synthesizeSpeech(synthesisText, VOICE_SELECTION_PARAMS, AUDIO_CONFIG);
+        log.info("Response received from TextToSpeechClient");
         return response.getAudioContent().toByteArray();
     }
 

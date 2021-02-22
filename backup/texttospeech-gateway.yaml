@@ -1,5 +1,5 @@
 ##########################################
-# HelloWorld Gateway
+# TextToSpeech Gateway
 ##########################################
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
@@ -17,7 +17,7 @@ spec:
         - "*"
 ---
 ############################################################
-# HelloWorld Virtual Service Account
+# TextToSpeech Virtual Service Account
 ############################################################
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -31,13 +31,12 @@ spec:
   http:
     - match:
         - uri:
-            exact: /healthCheck
+            exact: /textToSpeechFile
         - uri:
             exact: /textToSpeechFile
       route:
         - destination:
             host: texttospeech
             port:
-              number: 8080
-
-#---
+              number: 8181
+---
