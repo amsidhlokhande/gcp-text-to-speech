@@ -1,0 +1,65 @@
+####################################################
+# TextToSpeech Deployment
+####################################################
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: texttospeech
+  name: texttospeech
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: texttospeech
+  template:
+    metadata:
+      labels:
+        app: texttospeech
+    spec:
+      serviceAccountName: texttospeech
+      containers:
+        - name: texttospeech
+          image: adithilokhande/texttospeech:0.0.1-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8181
+          volumeMounts:
+            - name: tmp
+              mountPath: /temp
+          securityContext:
+            runAsUser: 1000
+      volumes:
+        - name: tmp
+          emptyDir: { }
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+---
+####################################################
+# TextToSpeech Service
+####################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: texttospeech
+  labels:
+    app: texttospeech
+    service: texttospeech     #To match with ServiceAccount metadata.label.account
+spec:
+  ports:
+    - port: 8181
+      name: http
+  selector:
+    app: texttospeech
+---
+##################################################
+# TextToSpeech Virtual Service Account
+##################################################
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: texttospeech-service-account
+  labels:
+    account: texttospeech
+---
