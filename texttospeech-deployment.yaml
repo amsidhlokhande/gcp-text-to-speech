@@ -1,5 +1,9 @@
 ####################################################
-# Hello World Deployment
+# Text to Speech Deployment
+#This deployment depends on one configmap key-value and one key file
+#So we need run the below kubectl commands to configure configmap and secret for key file
+#kubectl create configmap texttospeech-configmap --from-literal=GOOGLE_APPLICATION_CREDENTIALS=/etc/secret-volume/amsidh-microservice-project-505af11eaa22.json
+#kubectl create secret generic auth-key-file --from-file amsidh-microservice-project-505af11eaa22.json
 ####################################################
 apiVersion: apps/v1
 kind: Deployment
@@ -24,26 +28,30 @@ spec:
         - name: texttospeech
           image: adithilokhande/texttospeech:0.0.1-SNAPSHOT
           imagePullPolicy: Always
-
           ports:
             - containerPort: 8080
           env:
             - name: GOOGLE_APPLICATION_CREDENTIALS
-              value: /etc/secret-volume/amsidh-microservice-project-505af11eaa22.json
-
+              valueFrom:
+                configMapKeyRef:
+                  key: GOOGLE_APPLICATION_CREDENTIALS
+                  name: texttospeech-configmap
           securityContext:
             runAsUser: 1000
+          volumeMounts:
+            - mountPath: /etc/secret-volume
+              name: key-file-secret-volume
       volumes:
-        - name: google-application-credentional
+        - name: key-file-secret-volume
           secret:
-            secretName: google-application-credentional
+            secretName: auth-key-file
 
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
 
 ---
 ####################################################
-# Hello World Service
+# Text to Speech Service
 ####################################################
 apiVersion: v1
 kind: Service
@@ -58,13 +66,3 @@ spec:
       name: http
   selector:
     app: texttospeech
-#---
-##################################################
-# Virtual Service Account
-##################################################
-#apiVersion: v1
-#kind: ServiceAccount
-#metadata:
-#  name: helloworld-service-account
-#  labels:
-#    account: helloworld
