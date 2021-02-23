@@ -1,4 +1,4 @@
-package com.amsidh.mvc.gcptexttospeech.controller;
+package com.amsidh.mvc.speech.controller.advice;
 
 import lombok.*;
 import org.springframework.http.HttpHeaders;
@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @ControllerAdvice
-public class TextToSpeechControllerAdvice extends ResponseEntityExceptionHandler {
+public class SpeechControllerAdvice extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = {Exception.class})
     public ResponseEntity<Object> handleCustomException(Exception exception, WebRequest request) {

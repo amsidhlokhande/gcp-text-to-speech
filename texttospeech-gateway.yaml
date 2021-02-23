@@ -31,9 +31,7 @@ spec:
   http:
     - match:
         - uri:
-            exact: /healthCheck
-        - uri:
-            exact: /textToSpeechFile
+            prefix: /googlespeech
       route:
         - destination:
             host: texttospeech

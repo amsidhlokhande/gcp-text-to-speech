@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "amsidh-microservice-project",
+  "private_key_id": "505af11eaa22808792a8828acccf9c08dd0cb462",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCfbZbjchfC7OPs\nRXm0NAHtr2tUvPvVOwnAaKNZDXmXduT7YaR+v/ZStcQKxD3thA2d75mY7RkJkzu5\nNBbx4T4g7uo2uzZrKbzzvVbq2vYWWoANaR+XVrt+le0jSgv60qNfjyVg+vinBuLa\n9r3fDKCG8WG/bjSL+tSMyVd4idiR/8jAFuQ+M7nkgnJL4PuiYxBDmVvNw/9CpOff\nsNojKnHlWtlK+6NSawZkoElzr6FbfVjDq9ChwOioWTQlAv9DefRE4U8W1+1NvhKW\nyrmUw27+QvfUteVWI2fZ2xvK1VXPY7kzbxqbxxrr81pEvFpTyPR5O2xP423Y+00+\nZSdFL2X7AgMBAAECggEARQ4v9FbAChOX6ghx3edFCpIYGH0/S64l3Cy2zGT0zPGX\n33b8zFYTuOG4h71W4aF4UHeu/Tl9xdL7ZI42fhDFW3iBBLH0sVhD2wOhOVscirQq\nkSR+pYvQ7NS+AbIaHEvOrh6P30D2IUrvSk7kEVAj3C+D2mo+4n8EP/MaK0DyCNKm\nO2PRtVEVNlDU/lRR2KJZYLRKkyX0aVRVj5iaMcq1nKquGSg3VoEXyuzrgfDk6w3o\na/JTynSAZoV1JrZDq4j+LRPyHjJFRC22QMdjf+DVN49uMfgLvAFij4jQKnBoksX2\nnv7LGaUIqv8QVoKnc5SJLOQPvz84YRcuZPTsK7uQ8QKBgQDKKOPOTap6BweR7orj\nQV6EXihXVLtYjewK3uxY/gO5ayloXhZbj4+iq48Bwa0Tv056D+1EbG6bTAZVHYCg\neXcj/OANppDB+rjV+DHvod39FmtEd74RaxgIgrub7wSIBsi8Iv34ogEXHQ2s7ur1\nliuaflj/2z19VY756bpDKykCgwKBgQDJ40knAoU0XQPg2aGqkIq/Evo30YrzRust\nSKQqw99mpIWg1OLlIalc4w8TYcfDw9HXwBn+pr/7pXsRfmSB7QXRu4k/nZmcDEOF\njezmM1HDB6l5uWJxnDJ2FcFzgqyoos4lMhXLn1HSR6dJPKXvYnMcxQHtcwsSt3ZS\nhJHGLq3VKQKBgGXx8tdBcTuyOc4Mpjtt5pUHyn4nu4Yvo53jxvoltokVkj8QW2P2\n5G8a5rXzDi3MJm4FhBgiOjDUSMk5ZHkIZ91dEzuvCIbZwcYdMElwrjqHyLYxUEcG\nY4s/Kg67nORfz3CYkMyGHdijDRdtME2CWiDBoG3+CGcg80Xx6L0gkcCzAoGAQeeS\nb8ug1FEw/OvOnLGGuY1mZWZgJ76U8zltbhB3EzjN7ozQbOAqO4pb14XqAnwgOoAZ\nfEnPDkUdAb7y7H8FkUvZKA04ofpW6HhGR3elTzdnGbds7Y2B446CkkSsPHi5Nuc8\nujYOLcj6USwdNyI6Vb/yOyN9D+UYGSPxunJuiNECgYEAnEr9lOwLuPBedDUNLchi\nlNwq59mljNgbSBojmCMLl4VRqXNgO4kOIyBNJWd0PbPnOtFjyDIFOznevt74Vg1U\nS5zs2kGAQMf/WKHCqEd4FYRnrUyDbNllesa7QpQftQ73Fw+1yyvg51e7sC4X1F8F\nkjVDDSpif5eeFrMyW9KwQZU=\n-----END PRIVATE KEY-----\n",
+  "client_email": "texttospeech@amsidh-microservice-project.iam.gserviceaccount.com",
+  "client_id": "107408992969341384290",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/texttospeech%40amsidh-microservice-project.iam.gserviceaccount.com"
+}

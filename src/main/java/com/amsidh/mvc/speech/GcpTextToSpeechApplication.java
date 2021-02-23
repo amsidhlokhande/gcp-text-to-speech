@@ -1,4 +1,4 @@
-package com.amsidh.mvc.gcptexttospeech;
+package com.amsidh.mvc.speech;
 
 import com.google.cloud.texttospeech.v1.*;
 import com.google.protobuf.ByteString;

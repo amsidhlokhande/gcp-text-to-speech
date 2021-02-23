@@ -1,9 +1,7 @@
-package com.amsidh.mvc.gcptexttospeech.service.impl;
+package com.amsidh.mvc.speech.service.impl;
 
-import com.amsidh.mvc.gcptexttospeech.service.TextToSpeechService;
-import com.google.cloud.texttospeech.v1.SynthesisInput;
-import com.google.cloud.texttospeech.v1.SynthesizeSpeechResponse;
-import com.google.cloud.texttospeech.v1.TextToSpeechClient;
+import com.amsidh.mvc.speech.service.TextToSpeechService;
+import com.google.cloud.texttospeech.v1.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +14,8 @@ import org.springframework.stereotype.Service;
 public class TextToSpeechServiceImpl implements TextToSpeechService {
 
     private final TextToSpeechClient textToSpeechClient;
+    private final VoiceSelectionParams voiceSelectionParams;
+    private final AudioConfig audioConfig;
 
     @Override
     public byte[] convertTextToSpeech(String message) {
@@ -23,7 +23,7 @@ public class TextToSpeechServiceImpl implements TextToSpeechService {
         SynthesisInput synthesisText = getSynthesisText(message);
         log.info("input value got Synthesised");
         // Perform the text-to-speech request
-        SynthesizeSpeechResponse response = textToSpeechClient.synthesizeSpeech(synthesisText, VOICE_SELECTION_PARAMS, AUDIO_CONFIG);
+        SynthesizeSpeechResponse response = textToSpeechClient.synthesizeSpeech(synthesisText, voiceSelectionParams, audioConfig);
         log.info("Response received from TextToSpeechClient");
         return response.getAudioContent().toByteArray();
     }
