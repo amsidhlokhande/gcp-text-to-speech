@@ -1,0 +1,68 @@
+####################################################
+# Text to Speech Deployment
+#This deployment depends on one configmap key-value and one key file
+#So we need run the below kubectl commands to configure configmap and secret for key file
+#kubectl create configmap texttospeech-configmap --from-literal=GOOGLE_APPLICATION_CREDENTIALS=/etc/secret-volume/amsidh-microservice-project-505af11eaa22.json
+#kubectl create secret generic auth-key-file --from-file amsidh-microservice-project-505af11eaa22.json
+####################################################
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: texttospeech
+  name: texttospeech
+  namespace: default
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: texttospeech
+
+  template:
+    metadata:
+      labels:
+        app: texttospeech
+    spec:
+      containers:
+        - name: texttospeech
+          image: adithilokhande/texttospeech:0.0.1-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              valueFrom:
+                configMapKeyRef:
+                  key: GOOGLE_APPLICATION_CREDENTIALS
+                  name: texttospeech-configmap
+          securityContext:
+            runAsUser: 1000
+          volumeMounts:
+            - mountPath: /etc/secret-volume
+              name: key-file-secret-volume
+      volumes:
+        - name: key-file-secret-volume
+          secret:
+            secretName: auth-key-file
+
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+
+---
+####################################################
+# Text to Speech Service
+####################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: texttospeech
+  labels:
+    app: texttospeech
+    service: texttospeech     #To match with ServiceAccount metadata.label.account
+spec:
+  ports:
+    - port: 8080
+      name: http
+  selector:
+    app: texttospeech
