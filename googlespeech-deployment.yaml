@@ -36,15 +36,31 @@ spec:
                 configMapKeyRef:
                   key: GOOGLE_APPLICATION_CREDENTIALS
                   name: texttospeech-configmap
+            - name: OFFERS_DATA_FILE_PATH
+              valueFrom:
+                configMapKeyRef:
+                  key: OFFERS_DATA_FILE_PATH
+                  name: offersdata-configmap
           securityContext:
             runAsUser: 1000
           volumeMounts:
             - mountPath: /etc/secret-volume
               name: key-file-secret-volume
+
+            - mountPath: /etc/offerdata
+              name: offerdata-data-volume
       volumes:
         - name: key-file-secret-volume
           secret:
             secretName: auth-key-file
+
+        - name: offerdata-data-volume
+          secret:
+            secretName: offerdata-data
+
+
+
+
 
       restartPolicy: Always
       terminationGracePeriodSeconds: 30

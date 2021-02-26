@@ -32,6 +32,8 @@ spec:
     - match:
         - uri:
             prefix: /googlespeech
+        - uri:
+            prefix: /offers
       route:
         - destination:
             host: texttospeech
